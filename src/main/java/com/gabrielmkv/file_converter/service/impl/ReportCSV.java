@@ -52,6 +52,11 @@ public class ReportCSV extends ReportGeneratorTemplate {
     }
 
     @Override
+    public String getMimeType() {
+        return "text/csv;charset=UTF-8";
+    }
+
+    @Override
     protected byte[] generateContent(List<Transaction> transactions) {
         try {
             return mapper.writer(schema).writeValueAsBytes(transactions);

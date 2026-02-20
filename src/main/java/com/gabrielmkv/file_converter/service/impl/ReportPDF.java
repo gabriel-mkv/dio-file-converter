@@ -31,6 +31,11 @@ public class ReportPDF extends ReportGeneratorTemplate {
     private static final Font BODY_FONT = new Font(Font.HELVETICA, 10, Font.NORMAL);
 
     @Override
+    public String getMimeType() {
+        return "application/pdf";
+    }
+
+    @Override
     protected byte[] generateContent(List<Transaction> transactions) {
         try {
             ByteArrayOutputStream out = new ByteArrayOutputStream();

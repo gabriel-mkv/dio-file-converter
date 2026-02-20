@@ -17,6 +17,8 @@ public abstract class ReportGeneratorTemplate {
         return repository.findAll();
     }
 
+    public abstract String getMimeType();
+
     protected abstract byte[] generateContent(List<Transaction> transactions);
 
     public byte[] generateReport() {

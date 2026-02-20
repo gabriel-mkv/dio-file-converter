@@ -11,7 +11,7 @@ import tools.jackson.databind.ObjectMapper;
 
 @Component("json")
 public class ReportJSON extends ReportGeneratorTemplate {
-    
+
     private final ObjectMapper objectMapper;
 
     public ReportJSON(ObjectMapper objectMapper) {
@@ -19,8 +19,13 @@ public class ReportJSON extends ReportGeneratorTemplate {
     }
 
     @Override
+    public String getMimeType() {
+        return "application/json";
+    }
+
+    @Override
     protected byte[] generateContent(List<Transaction> transactions) {
         return objectMapper.writeValueAsBytes(transactions);
     }
-    
+
 }

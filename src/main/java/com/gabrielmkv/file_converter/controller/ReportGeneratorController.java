@@ -31,15 +31,8 @@ public class ReportGeneratorController {
 
         byte[] report = strategy.generateReport();
 
-        MediaType contentType = switch (type) {
-            case "json" -> MediaType.APPLICATION_JSON;
-            case "csv" -> MediaType.parseMediaType("text/csv;charset=UTF-8");
-            case "pdf" -> MediaType.APPLICATION_PDF;
-            default -> MediaType.APPLICATION_OCTET_STREAM;
-        };
-
         return ResponseEntity.ok()
-                .contentType(contentType)
+                .contentType(MediaType.parseMediaType(strategy.getMimeType()))
                 .header(HttpHeaders.CONTENT_DISPOSITION, "inline; filename=relatorio." + type)
                 .body(report);
     }
