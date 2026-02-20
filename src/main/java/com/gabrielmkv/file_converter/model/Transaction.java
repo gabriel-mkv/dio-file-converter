@@ -3,7 +3,9 @@ package com.gabrielmkv.file_converter.model;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -14,6 +16,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "transactions")
+@JsonPropertyOrder({"date", "description", "value", "category"})
 public class Transaction {
     
     @Id
@@ -21,6 +24,7 @@ public class Transaction {
     @JsonIgnore
     private Long id;
     @Column(name = "transaction_date", nullable = false)
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate date;
     @Column(name = "Description", nullable = false)
     private String description;

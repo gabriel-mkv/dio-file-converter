@@ -32,7 +32,6 @@ VALUES ('2026-02-24', 'Padaria da Esquina', 22.30, 'Alimentação');
 INSERT INTO transactions (transaction_date, description, value_brl, category) 
 VALUES ('2026-02-25', 'Ingresso Cinema', 45.00, 'Lazer');
 
--- Diversos / Compras
 INSERT INTO transactions (transaction_date, description, value_brl, category) 
 VALUES ('2026-02-26', 'Amazon - Livro Técnico', 89.90, 'Educação');
 
