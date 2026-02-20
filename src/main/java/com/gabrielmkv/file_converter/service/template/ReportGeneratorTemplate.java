@@ -22,11 +22,14 @@ public abstract class ReportGeneratorTemplate {
     public byte[] generateReport() {
         try {
             List<Transaction> transactions = extractData();
-            byte[] content = generateContent(transactions);
-            return content;
+
+            if (transactions == null || transactions.isEmpty()) {
+                throw new ReportGenerationException("Nenhuma transação encontrada!");
+            }
+
+            return generateContent(transactions);
         } catch (Exception e) {
-            System.err.println("Erro ao gerar o relatório: " + e.getMessage());
-            throw new ReportGenerationException("Erro ao gerar o relatório!");
+            throw new ReportGenerationException("Erro ao gerar o relatório: " + e.getMessage(), e);
         }
     }
 
