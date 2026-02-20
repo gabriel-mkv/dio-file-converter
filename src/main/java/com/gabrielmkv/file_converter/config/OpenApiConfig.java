@@ -1,4 +1,4 @@
-package com.gabrielmkv.file_converter;
+package com.gabrielmkv.file_converter.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
