@@ -19,6 +19,10 @@ public abstract class ReportGeneratorTemplate {
 
     public abstract String getMimeType();
 
+    public String getContentDisposition() {
+        return "inline";
+    }
+
     protected abstract byte[] generateContent(List<Transaction> transactions);
 
     public byte[] generateReport() {

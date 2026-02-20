@@ -29,6 +29,8 @@
 	</scm>
 	<properties>
 		<java.version>21</java.version>
+		<openpdf.version>3.0.0</openpdf.version>
+		<swagger.version>2.5.0</swagger.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -54,11 +56,11 @@
 		<dependency>
 			<groupId>com.github.librepdf</groupId>
 			<artifactId>openpdf</artifactId>
-			<version>3.0.0</version>
+			<version>${openpdf.version}</version>
 		</dependency>
 
 		<!-- H2 Database -->
-		 <dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-h2console</artifactId>
 		</dependency>
@@ -66,6 +68,13 @@
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 			<scope>runtime</scope>
+		</dependency>
+
+		<!-- Swagger -->
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+			<version>${swagger.version}</version>
 		</dependency>
 
 		<dependency>

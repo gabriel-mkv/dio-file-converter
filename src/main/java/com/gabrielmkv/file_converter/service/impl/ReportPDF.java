@@ -36,6 +36,11 @@ public class ReportPDF extends ReportGeneratorTemplate {
     }
 
     @Override
+    public String getContentDisposition() {
+        return "attachment";
+    }
+
+    @Override
     protected byte[] generateContent(List<Transaction> transactions) {
         try {
             ByteArrayOutputStream out = new ByteArrayOutputStream();
