@@ -14,6 +14,11 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+/**
+ * Representa uma transação financeira no sistema.
+ * Esta entidade mapeia os dados de transações (data, descrição, valor e categoria)
+ * para a tabela 'transactions' no banco de dados.
+ */
 @Entity
 @Table(name = "transactions")
 @JsonPropertyOrder({"date", "description", "value", "category"})
@@ -26,11 +31,11 @@ public class Transaction {
     @Column(name = "transaction_date", nullable = false)
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate date;
-    @Column(name = "Description", nullable = false)
+    @Column(name = "description", nullable = false)
     private String description;
-    @Column(name = "Value_brl", nullable = false, precision = 10, scale = 2)
+    @Column(name = "value_brl", nullable = false, precision = 10, scale = 2)
     private BigDecimal value;
-    @Column(name = "Category")
+    @Column(name = "category")
     private String category;
 
     public Long getId() {

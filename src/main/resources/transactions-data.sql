@@ -6,7 +6,7 @@ INSERT INTO transactions (transaction_date, description, value_brl, category)
 VALUES ('2026-02-16', 'Posto de Gasolina', 180.00, 'Transporte');
 
 INSERT INTO transactions (transaction_date, description, value_brl, category) 
-VALUES ('2026-02-18', 'Pagamento Internet', 99.90, 'Contas Fixas');
+VALUES ('2026-02-18', 'Pagamento Internet', -99.90, 'Contas Fixas');
 
 INSERT INTO transactions (transaction_date, description, value_brl, category) 
 VALUES ('2026-02-19', 'Restaurante Japonês', 120.00, 'Lazer');
