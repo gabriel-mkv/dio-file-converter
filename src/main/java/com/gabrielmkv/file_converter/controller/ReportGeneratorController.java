@@ -17,6 +17,10 @@ import io.swagger.v3.oas.annotations.Parameter;
 
 import java.util.Map;
 
+/**
+ * Controlador REST responsável pelos endpoints de geração de relatórios.
+ * Gerencia as requisições para exportação de dados de transações.
+ */
 @RestController
 @RequestMapping("/report")
 public class ReportGeneratorController {
@@ -24,6 +28,12 @@ public class ReportGeneratorController {
     @Autowired
     private Map<String, ReportGeneratorTemplate> service;
 
+    /**
+     * Gera um relatório de transações no formato solicitado.
+     * 
+     * @param type O formato do arquivo desejado (pdf, csv, json).
+     * @return ResponseEntity contendo os bytes do arquivo gerado.
+     */
     @Operation(summary = "Gera relatório de transações", description = "Busca todas as transações do banco e gera um arquivo no formato especificado.")
     @GetMapping
     public ResponseEntity<byte[]> reportGenerate(

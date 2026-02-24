@@ -22,12 +22,32 @@ import com.fasterxml.jackson.databind.module.SimpleModule;
 import java.io.IOException;
 import java.math.BigDecimal;
 
+/**
+ * Implementação da estratégia de geração de relatórios em formato CSV.
+ * <p>
+ * Utiliza a biblioteca Jackson (com o módulo CSV) para serializar objetos.
+ * O arquivo gerado utiliza ponto e vírgula (;) como separador e segue o padrão
+ * de formatação brasileiro para números e datas.
+ * </p>
+ */
 @Component("csv")
 public class ReportCSV extends ReportGeneratorTemplate {
 
+    // Mapper e Schema são configurados no construtor para serem reutilizados e thread-safe.
     private final CsvMapper mapper;
     private final CsvSchema schema;
 
+    /**
+     * Construtor da classe.
+     * <p>
+     * Configura o {@link CsvMapper} e o {@link CsvSchema} com as seguintes definições:
+     * <ul>
+     *   <li>Módulo JavaTimeModule para datas.</li>
+     *   <li>Serializer customizado para BigDecimal (formato brasileiro).</li>
+     *   <li>Schema com cabeçalho e separador ';'.</li>
+     * </ul>
+     * </p>
+     */
     public ReportCSV() {
         SimpleModule decimalModule = new SimpleModule();
         decimalModule.addSerializer(BigDecimal.class, new JsonSerializer<BigDecimal>() {
@@ -56,6 +76,13 @@ public class ReportCSV extends ReportGeneratorTemplate {
         return "text/csv;charset=UTF-8";
     }
 
+    /**
+     * Gera o conteúdo do arquivo CSV.
+     * 
+     * @param transactions A lista de transações a serem serializadas.
+     * @return Um array de bytes representando o arquivo CSV.
+     * @throws ReportGenerationException Se ocorrer um erro na serialização (JsonProcessingException).
+     */
     @Override
     protected byte[] generateContent(List<Transaction> transactions) {
         try {

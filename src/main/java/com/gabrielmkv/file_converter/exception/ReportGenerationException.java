@@ -3,6 +3,10 @@ package com.gabrielmkv.file_converter.exception;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.http.HttpStatus;
 
+/**
+ * Exceção lançada quando ocorre um erro durante a geração de relatórios.
+ * Retorna status HTTP 500 (Internal Server Error).
+ */
 @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
 public class ReportGenerationException extends RuntimeException {
 
